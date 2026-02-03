@@ -79,3 +79,7 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 addopts = "-v --tb=short"
+
+[tool.ty]
+# ty type checker configuration
+# Using defaults with strict checking
