@@ -40,31 +40,31 @@ def __():
 
 @app.cell
 def __(mo):
-    mo.vstack([
-        mo.md(
-            """
+    mo.vstack(
+        [
+            mo.md(
+                """
             # Welcome to the Modern Python Data Science Bootcamp
 
             You are about to work through a practical, notebook-first learning path
             that takes you from environment setup to production-scale data pipelines.
             """
-        ),
-        mo.hstack(
-            [
-                mo.stat(value="9", label="Modules", caption="Setup to Databricks"),
-                mo.stat(value="~44h", label="Total Hours", caption="At your own pace"),
-                mo.stat(value="55+", label="Notebooks", caption="Interactive lessons"),
-            ],
-            justify="space-around",
-            wrap=True,
-        ),
-        mo.callout(
-            mo.md(
-                f"{mo.icon('lucide:clock')} **15 minutes** | No exercises | Just explore"
             ),
-            kind="info",
-        ),
-    ])
+            mo.hstack(
+                [
+                    mo.stat(value="9", label="Modules", caption="Setup to Databricks"),
+                    mo.stat(value="~44h", label="Total Hours", caption="At your own pace"),
+                    mo.stat(value="55+", label="Notebooks", caption="Interactive lessons"),
+                ],
+                justify="space-around",
+                wrap=True,
+            ),
+            mo.callout(
+                mo.md(f"{mo.icon('lucide:clock')} **15 minutes** | No exercises | Just explore"),
+                kind="info",
+            ),
+        ]
+    )
     return
 
 
@@ -113,58 +113,60 @@ def __(audience_selector, mo):
 
 @app.cell
 def __(mo):
-    mo.vstack([
-        mo.md("## What You Will Learn"),
-        mo.accordion(
-            {
-                "Modern Python Tooling": mo.md(
-                    "Set up and manage Python projects using **uv**, **ruff**, **ty**, "
-                    "and **pytest**. You will learn the modern Astral-powered workflow "
-                    "that replaces pip, black, mypy, and more. *(Module 0)*"
-                ),
-                "Idiomatic Python 3.14+": mo.md(
-                    "Write clean Python with **type hints**, **Pydantic models**, "
-                    "**pattern matching**, **generators**, and **structured error handling**. "
-                    "*(Module 1)*"
-                ),
-                "Polars & DuckDB": mo.md(
-                    "Explore, clean, and transform data using **Polars** DataFrames and "
-                    "**DuckDB** SQL queries. Learn lazy evaluation and efficient file "
-                    "format handling. *(Module 2)*"
-                ),
-                "Data Acquisition": mo.md(
-                    "Pull data from **REST APIs** with httpx, query **databases**, "
-                    "and scrape web sources. Build robust data ingestion workflows. "
-                    "*(Module 3)*"
-                ),
-                "Data Cleaning & Preparation": mo.md(
-                    "Handle **missing data**, detect **outliers**, coerce types, and "
-                    "validate with **Pandera**. This is the largest module because "
-                    "cleaning is where most real-world time goes. *(Module 4)*"
-                ),
-                "Feature Engineering & Pipelines": mo.md(
-                    "Build **reproducible data pipelines** with transformations, "
-                    "encoding, and validation steps that work end to end. *(Module 5)*"
-                ),
-                "Data Visualization": mo.md(
-                    "Create effective visualizations for **exploration** and "
-                    "**communication** using Marimo's built-in charting and interactive "
-                    "dashboard capabilities. *(Module 6)*"
-                ),
-                "Machine Learning with scikit-learn": mo.md(
-                    "Apply **scikit-learn** to build, evaluate, and tune prediction models. "
-                    "Culminates in a capstone project classifying IT support tickets. "
-                    "*(Module 7)*"
-                ),
-                "Scaling to Databricks & PySpark": mo.md(
-                    "Transition local workflows to **PySpark** and **Databricks**. Learn "
-                    "Delta Lake, the medallion architecture, and cloud-scale patterns. "
-                    "*(Module 8)*"
-                ),
-            },
-            multiple=True,
-        ),
-    ])
+    mo.vstack(
+        [
+            mo.md("## What You Will Learn"),
+            mo.accordion(
+                {
+                    "Modern Python Tooling": mo.md(
+                        "Set up and manage Python projects using **uv**, **ruff**, **ty**, "
+                        "and **pytest**. You will learn the modern Astral-powered workflow "
+                        "that replaces pip, black, mypy, and more. *(Module 0)*"
+                    ),
+                    "Idiomatic Python 3.14+": mo.md(
+                        "Write clean Python with **type hints**, **Pydantic models**, "
+                        "**pattern matching**, **generators**, and **structured error handling**. "
+                        "*(Module 1)*"
+                    ),
+                    "Polars & DuckDB": mo.md(
+                        "Explore, clean, and transform data using **Polars** DataFrames and "
+                        "**DuckDB** SQL queries. Learn lazy evaluation and efficient file "
+                        "format handling. *(Module 2)*"
+                    ),
+                    "Data Acquisition": mo.md(
+                        "Pull data from **REST APIs** with httpx, query **databases**, "
+                        "and scrape web sources. Build robust data ingestion workflows. "
+                        "*(Module 3)*"
+                    ),
+                    "Data Cleaning & Preparation": mo.md(
+                        "Handle **missing data**, detect **outliers**, coerce types, and "
+                        "validate with **Pandera**. This is the largest module because "
+                        "cleaning is where most real-world time goes. *(Module 4)*"
+                    ),
+                    "Feature Engineering & Pipelines": mo.md(
+                        "Build **reproducible data pipelines** with transformations, "
+                        "encoding, and validation steps that work end to end. *(Module 5)*"
+                    ),
+                    "Data Visualization": mo.md(
+                        "Create effective visualizations for **exploration** and "
+                        "**communication** using Marimo's built-in charting and interactive "
+                        "dashboard capabilities. *(Module 6)*"
+                    ),
+                    "Machine Learning with scikit-learn": mo.md(
+                        "Apply **scikit-learn** to build, evaluate, and tune prediction models. "
+                        "Culminates in a capstone project classifying IT support tickets. "
+                        "*(Module 7)*"
+                    ),
+                    "Scaling to Databricks & PySpark": mo.md(
+                        "Transition local workflows to **PySpark** and **Databricks**. Learn "
+                        "Delta Lake, the medallion architecture, and cloud-scale patterns. "
+                        "*(Module 8)*"
+                    ),
+                },
+                multiple=True,
+            ),
+        ]
+    )
     return
 
 
@@ -302,28 +304,28 @@ def __(mo, schedule_selector):
 
 @app.cell
 def __(mo):
-    demo_slider = mo.ui.slider(
-        start=1, stop=10, value=5, label="Pick a number", show_value=True
-    )
-    mo.vstack([
-        mo.md(
-            """
+    demo_slider = mo.ui.slider(start=1, stop=10, value=5, label="Pick a number", show_value=True)
+    mo.vstack(
+        [
+            mo.md(
+                """
             ## How Marimo Works
 
             Marimo notebooks are **reactive**. Change an input, and everything
             downstream updates automatically. Try it yourself:
             """
-        ),
-        mo.callout(
-            mo.md(
-                "- **Run cells** — each cell executes its Python code\n"
-                "- **Reactive** — move the slider below and watch the stats update\n"
-                "- **Save** — your notebook is a `.py` file, version it with git"
             ),
-            kind="warn",
-        ),
-        demo_slider,
-    ])
+            mo.callout(
+                mo.md(
+                    "- **Run cells** — each cell executes its Python code\n"
+                    "- **Reactive** — move the slider below and watch the stats update\n"
+                    "- **Save** — your notebook is a `.py` file, version it with git"
+                ),
+                kind="warn",
+            ),
+            demo_slider,
+        ]
+    )
     return (demo_slider,)
 
 
@@ -336,9 +338,7 @@ def __(demo_slider, mo):
     mo.hstack(
         [
             mo.stat(value=str(_n), label="Your Number"),
-            mo.stat(
-                value=str(_squared), label="Squared", direction="increase"
-            ),
+            mo.stat(value=str(_squared), label="Squared", direction="increase"),
             mo.stat(value=str(_cubed), label="Cubed", direction="increase"),
         ],
         justify="space-around",
@@ -349,96 +349,94 @@ def __(demo_slider, mo):
 
 @app.cell
 def __(mo):
-    mo.vstack([
-        mo.md("## Quick Check"),
-        mo.md(
-            "Think about each question, then expand to see the answer."
-        ),
-        mo.accordion(
-            {
-                "What happens when you move a slider in Marimo?": mo.md(
-                    "All cells that **depend on that slider's value** re-execute "
-                    "automatically. You saw this when the squared and cubed stats "
-                    "updated above."
-                ),
-                "Where should you start if you already know Python?": mo.md(
-                    "**Skim Modules 0 and 1** for tooling setup, then dive deep "
-                    "starting at **Module 2** (Polars & DuckDB)."
-                ),
-                "How many total hours is the full bootcamp?": mo.md(
-                    "About **44 hours** across 9 modules. You can spread this over "
-                    "2 weeks (intensive) or 4-6 weeks (extended/self-paced)."
-                ),
-            }
-        ),
-        mo.callout(
-            mo.md(
-                "These are not graded. They are here to confirm you caught the key points."
+    mo.vstack(
+        [
+            mo.md("## Quick Check"),
+            mo.md("Think about each question, then expand to see the answer."),
+            mo.accordion(
+                {
+                    "What happens when you move a slider in Marimo?": mo.md(
+                        "All cells that **depend on that slider's value** re-execute "
+                        "automatically. You saw this when the squared and cubed stats "
+                        "updated above."
+                    ),
+                    "Where should you start if you already know Python?": mo.md(
+                        "**Skim Modules 0 and 1** for tooling setup, then dive deep "
+                        "starting at **Module 2** (Polars & DuckDB)."
+                    ),
+                    "How many total hours is the full bootcamp?": mo.md(
+                        "About **44 hours** across 9 modules. You can spread this over "
+                        "2 weeks (intensive) or 4-6 weeks (extended/self-paced)."
+                    ),
+                }
             ),
-            kind="success",
-        ),
-    ])
+            mo.callout(
+                mo.md("These are not graded. They are here to confirm you caught the key points."),
+                kind="success",
+            ),
+        ]
+    )
     return
 
 
 @app.cell
 def __(mo):
-    mo.vstack([
-        mo.md("## Getting Help"),
-        mo.hstack(
-            [
-                mo.callout(
-                    mo.md(
-                        f"{mo.icon('lucide:calendar')} **Office Hours**\n\n"
-                        "Drop-in sessions are held **[TBD: day/time]** via "
-                        "**[TBD: platform]**.\n\n"
-                        "Bring setup questions, concept clarifications, "
-                        "or just come to work alongside others."
+    mo.vstack(
+        [
+            mo.md("## Getting Help"),
+            mo.hstack(
+                [
+                    mo.callout(
+                        mo.md(
+                            f"{mo.icon('lucide:calendar')} **Office Hours**\n\n"
+                            "Drop-in sessions are held **[TBD: day/time]** via "
+                            "**[TBD: platform]**.\n\n"
+                            "Bring setup questions, concept clarifications, "
+                            "or just come to work alongside others."
+                        ),
+                        kind="info",
                     ),
-                    kind="info",
-                ),
-                mo.callout(
-                    mo.md(
-                        f"{mo.icon('lucide:message-circle')} **Community Channel**\n\n"
-                        "Join **[TBD: Slack/Discord channel]** for:\n"
-                        "- Peer support and study groups\n"
-                        "- Announcements and schedule changes\n"
-                        "- Async Q&A with instructors"
+                    mo.callout(
+                        mo.md(
+                            f"{mo.icon('lucide:message-circle')} **Community Channel**\n\n"
+                            "Join **[TBD: Slack/Discord channel]** for:\n"
+                            "- Peer support and study groups\n"
+                            "- Announcements and schedule changes\n"
+                            "- Async Q&A with instructors"
+                        ),
+                        kind="info",
                     ),
-                    kind="info",
-                ),
-            ],
-            gap=2,
-            wrap=True,
-        ),
-        mo.md("---"),
-        mo.md("## Next Steps"),
-        mo.md(
-            "Here is the full Module 0 sequence. You are on the first one."
-        ),
-        mo.tree(
-            {
-                "Module 0: Environment & Tooling": [
-                    "0.1 Welcome & Bootcamp Overview (you are here)",
-                    "0.2 Installing Python & UV",
-                    "0.3 Project Structure & pyproject.toml",
-                    "0.4 Introduction to Marimo",
-                    "0.5 Ruff: Linting & Formatting",
-                    "0.6 Type Checking with ty",
-                    "0.7 Testing with pytest",
-                ]
-            }
-        ),
-        mo.callout(
-            mo.md(
-                f"{mo.icon('lucide:arrow-right')} **Continue to 0.2 Installing Python & UV.** "
-                "In the Marimo file browser, navigate to "
-                "`notebooks/module_00_environment/` and open "
-                "`00_02_installing_python_uv.py`."
+                ],
+                gap=2,
+                wrap=True,
             ),
-            kind="success",
-        ),
-    ])
+            mo.md("---"),
+            mo.md("## Next Steps"),
+            mo.md("Here is the full Module 0 sequence. You are on the first one."),
+            mo.tree(
+                {
+                    "Module 0: Environment & Tooling": [
+                        "0.1 Welcome & Bootcamp Overview (you are here)",
+                        "0.2 Installing Python & UV",
+                        "0.3 Project Structure & pyproject.toml",
+                        "0.4 Introduction to Marimo",
+                        "0.5 Ruff: Linting & Formatting",
+                        "0.6 Type Checking with ty",
+                        "0.7 Testing with pytest",
+                    ]
+                }
+            ),
+            mo.callout(
+                mo.md(
+                    f"{mo.icon('lucide:arrow-right')} **Continue to 0.2 Installing Python & UV.** "
+                    "In the Marimo file browser, navigate to "
+                    "`notebooks/module_00_environment/` and open "
+                    "`00_02_installing_python_uv.py`."
+                ),
+                kind="success",
+            ),
+        ]
+    )
     return
 
 
