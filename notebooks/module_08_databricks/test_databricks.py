@@ -14,7 +14,7 @@ app = marimo.App(width="medium")
 @app.cell
 def __():
     # This would require Databricks environment
-    from databricks import sql
+    from databricks import sql  # noqa: F401
 
     # Connection would fail without Databricks
     return
