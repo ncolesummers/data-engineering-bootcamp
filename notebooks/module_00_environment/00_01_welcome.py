@@ -70,8 +70,6 @@ def __(mo):
 
 @app.cell
 def __(mo):
-    mo.md("## Who Is This For?")
-
     audience_selector = mo.ui.radio(
         options={
             "I have little or no Python experience": "beginner",
@@ -80,7 +78,7 @@ def __(mo):
         },
         label="Which best describes you?",
     )
-    audience_selector
+    mo.vstack([mo.md("## Who Is This For?"), audience_selector])
     return (audience_selector,)
 
 
@@ -172,8 +170,6 @@ def __(mo):
 
 @app.cell
 def __(mo):
-    mo.md("## Module Roadmap")
-
     module_tabs = mo.ui.tabs(
         {
             "Mod 0": mo.md(
@@ -247,14 +243,12 @@ def __(mo):
             ),
         }
     )
-    module_tabs
+    mo.vstack([mo.md("## Module Roadmap"), module_tabs])
     return (module_tabs,)
 
 
 @app.cell
 def __(mo):
-    mo.md("## Choose Your Pace")
-
     schedule_selector = mo.ui.dropdown(
         options=[
             "Intensive (2 weeks)",
@@ -263,7 +257,7 @@ def __(mo):
         ],
         label="Which schedule works for you?",
     )
-    schedule_selector
+    mo.vstack([mo.md("## Choose Your Pace"), schedule_selector])
     return (schedule_selector,)
 
 
@@ -308,6 +302,9 @@ def __(mo, schedule_selector):
 
 @app.cell
 def __(mo):
+    demo_slider = mo.ui.slider(
+        start=1, stop=10, value=5, label="Pick a number", show_value=True
+    )
     mo.vstack([
         mo.md(
             """
@@ -325,12 +322,8 @@ def __(mo):
             ),
             kind="warn",
         ),
+        demo_slider,
     ])
-
-    demo_slider = mo.ui.slider(
-        start=1, stop=10, value=5, label="Pick a number", show_value=True
-    )
-    demo_slider
     return (demo_slider,)
 
 
